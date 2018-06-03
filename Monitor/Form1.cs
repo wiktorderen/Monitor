@@ -19,16 +19,29 @@ namespace Monitor
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine("Podaj wartosc zuzycia procesora: ");
-            Console.ReadLine();
+            float time = perfSystemCounter.NextValue();
 
-            label1.Text = "CPU:" + "        " + (int)perfCPUCounter.NextValue() + "  " + "%";
-            label2.Text = "System Up Time:" + "       " + (int)perfSystemCounter.NextValue() + " secounds";
-            if ((int)perfCPUCounter.NextValue()>)
+            int percent = (int)perfCPUCounter.NextValue();
+            int threshold = 30;
+            
+            label1.Text = "CPU:" + "        " + percent + "  " + "%";
+            label2.Text = "System Up Time:" + "      " + change(time);
+            
+            
+
+            if (percent > threshold)
                 Console.Beep(5000, 500);
-
         }
-        
+        private string change(float time)
+        {
+            if (time < 60)
+                return Math.Floor(time) + " sec";
+
+            else //if (60 < time && time < 3600)
+                return Math.Floor(time / 60) + " min " + Math.Floor((time/60-Math.Floor(time/60))*60) + " sec";
+            
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
            
