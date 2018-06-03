@@ -41,6 +41,14 @@ namespace Monitor
                 return Math.Floor(time / 60) + " min " + Math.Floor((time/60-Math.Floor(time/60))*60) + " sec";
             
         }
+        private void label1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }//zmiana
