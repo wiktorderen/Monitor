@@ -7,7 +7,6 @@ namespace Monitor
        
     public partial class Form1 : Form
     {
-
         PerformanceCounter perfCPUCounter = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
         PerformanceCounter perfSystemCounter = new PerformanceCounter("System", "System Up Time");
 
@@ -22,11 +21,13 @@ namespace Monitor
             float time = perfSystemCounter.NextValue();
 
             int percent = (int)perfCPUCounter.NextValue();
-            int threshold = 30;
+
+            int threshold;
+            threshold = Convert.ToInt32(comboBox1.SelectedItem); 
             
-            label1.Text = "CPU:" + "        " + percent + "  " + "%";
+            label1.Text = "CPU:" + "                        " + percent + "  " + "%";
             label2.Text = "System Up Time:" + "      " + change(time);
-            
+            label3.Text = "Author:    Wiktor Dereń";
             
 
             if (percent > threshold)
@@ -49,6 +50,26 @@ namespace Monitor
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }//zmiana
